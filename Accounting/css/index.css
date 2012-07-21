@@ -10,33 +10,76 @@
   line-height: 20px;
 }
 
-#exp_table{
-  width: 600px;
+#balance_box{
+  margin-left: 60px;
   margin-top: 20px;
-  margin: 20px auto 0px auto;
 }
 
-#exp_table .row > div{
+#input_form{
+  width: 590px;
+  height: 30px;
+  margin: 20px auto 0px auto;
+  /*border: 1px solid blue;*/
+}
+
+#input_form div{
   float: left;
-  text-align: center;
+  padding: 5px 0px 5px 5px;
+}
+
+#input_form #note     { width: 250px; padding-left: 0px;}
+#input_form #expense  { width: 70px; }
+#input_form #income   { width: 70px; }
+#input_form #date     { width: 110px; }
+#input_form #add      { width: 40px; }
+#input_form #add input  { margin-left: 8px; }
+
+#input_form #date #picker{
+  float: right;
+  width: 20px;
+  height: 10px;
+  background-color: red;
+}
+
+#exp_table{
+  width: 590px;
+  margin-top: 20px;
+  margin: 3px auto 0px auto;
+}
+
+#exp_table div.row > div{
+  float: left;
   border-left: solid black 1px;
   border-bottom: solid black 1px;
+  padding: 5px 0px 5px 5px;
 }
 
-#exp_table .row.first > div{
+#exp_table div.row.first > div{
   border-top: solid black 1px;
   background-color: #EEEEEE;
+  text-align: center;
 }
 
-#exp_table .row.even > div{
+#exp_table div.row.even > div{
   background-color: #EEEEEE;
 }
 
-.id { display: none; }
-.note     { width: 100px; }
-.expense  { width: 100px; }
-.income   { width: 100px; }
-.date   { width: 100px; }
-.action     { width: 100px; border-right: 1px solid black; }
+#exp_table div.row div.id { display: none; }
+#exp_table div.row div.note     { width: 250px; }
+#exp_table div.row div.expense  { width: 70px; }
+#exp_table div.row div.income   { width: 70px; }
+#exp_table div.row div.date   { width: 110px; }
+#exp_table div.row div.action{ 
+  width: 50px; border-right: 1px solid black; 
+}
 
+#exp_table div.row div.action div.icon{
+  background: url(../images/delete-icon3.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  margin: 0px auto 0px auto;
+}
 
+.ui-datepicker {
+  font-size: 12px !important;
+}
