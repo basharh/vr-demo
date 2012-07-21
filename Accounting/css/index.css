@@ -1,0 +1,42 @@
+
+#main {
+  width: 700px;
+  height: 500px;
+  margin: 40px auto 0px auto;
+  /*background-color: red;*/
+  border: 1px solid black;
+  font-family: Verdana;
+  font-size : 14px;
+  line-height: 20px;
+}
+
+#exp_table{
+  width: 600px;
+  margin-top: 20px;
+  margin: 20px auto 0px auto;
+}
+
+#exp_table .row > div{
+  float: left;
+  text-align: center;
+  border-left: solid black 1px;
+  border-bottom: solid black 1px;
+}
+
+#exp_table .row.first > div{
+  border-top: solid black 1px;
+  background-color: #EEEEEE;
+}
+
+#exp_table .row.even > div{
+  background-color: #EEEEEE;
+}
+
+.id { display: none; }
+.note     { width: 100px; }
+.expense  { width: 100px; }
+.income   { width: 100px; }
+.date   { width: 100px; }
+.action     { width: 100px; border-right: 1px solid black; }
+
+
