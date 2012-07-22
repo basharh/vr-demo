@@ -2,6 +2,11 @@
 $(document).ready(function() {
   console.log("DOM is ready");
 
+  $(".action .icon").live('click', function(e){
+    $(e.target).parent().parent().remove();
+    update_balance();
+  });
+
   $("#datepicker").datepicker({
     showOn: "button",
     buttonImage: "images/calendar.gif",
@@ -21,6 +26,7 @@ $(document).ready(function() {
     
     append_record("", note, expense, income, date);
     clear_fields();
+    update_balance();
   });
 
 });
@@ -33,14 +39,14 @@ function append_record(id, note, expense, income, date) {
     noteEl.innerHTML = note;
     noteEl.className = 'note';
     var expEl = document.createElement("td");
-    expEl.innerHTML = expense;
-    noteEl.className = 'expense';
+    if ( expense != "" ) expEl.innerHTML = "$" + expense;
+    expEl.className = 'expense';
     var incEl = document.createElement("td");
-    incEl.innerHTML = income;
-    noteEl.className = 'income';
+    if ( income != "" ) incEl.innerHTML = "$" + income;
+    incEl.className = 'income';
     var dateEl = document.createElement("td");
     dateEl.innerHTML = date;
-    noteEl.className = 'date';
+    dateEl.className = 'date';
 
     var actionEl = document.createElement("td");
     actionEl.innerHTML = '<div class="icon"></div>';
@@ -51,7 +57,8 @@ function append_record(id, note, expense, income, date) {
     record.appendChild(incEl);
     record.appendChild(dateEl);
     record.appendChild(actionEl);
-    document.getElementById("exp_table").appendChild(record);
+    //document.getElementById("exp_table").appendChild(record);
+    $("#exp_table tbody").append( $(record) );
 }
 
 function validate(id, note, expense, income, date){
@@ -76,17 +83,17 @@ function validate(id, note, expense, income, date){
   }
   else{
 
-    if( expense != "" && !isNumber(expense)) 
+    if( expense != "" && ( !isNumber(expense) || parseFloat(expense) <= 0 ) ) 
     {
       $('#expense input').addClass('error');
-      add_err_msg('Expense should be a valid number');
+      add_err_msg('Expense should be a valid positive number');
       valid = false;
     }
 
-    if ( income != "" &&   !isNumber(income) )
+    if ( income != "" && ( !isNumber(income) || parseFloat(income) <= 0 ) )
     {
       $('#income input').addClass('error');
-      add_err_msg('Income should be a valid number');
+      add_err_msg('Income should be a valid positive number');
       valid = false;
     }
   }
@@ -120,6 +127,49 @@ function isNumber(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-function delete_record(){
+function update_balance(){
+
+  var expense_total = 0;
+  $("td.expense").each(function(){
+    var html = $.trim(this.innerHTML);
+
+    if ( html == "" )
+      return;
+
+    html = html.substring(1); 
+    expense_total += parseFloat(html);
+  });
+  
+  var income_total = 0;
+  $("td.income").each(function(){
+    var html = $.trim(this.innerHTML);
+
+    if ( html == "" )
+      return;
+
+    html = html.substring(1); 
+    income_total += parseFloat(html);
+  });
+
+  var total = income_total - expense_total;
+
+  total = total.toFixed(2);
+
+  var total_str = "";
+  
+  console.log('expense_total: ' + expense_total );
+  console.log('income_total: ' + income_total );
+  if (total < 0 )
+  {
+    total = Math.abs(total);
+    total_str = '($' + total + ')';
+  }
+  else
+  {
+    total = Math.abs(total);
+    total_str = '$' + total; 
+  }
+
+  $("#balance_box #total").text(total_str);
 
 }

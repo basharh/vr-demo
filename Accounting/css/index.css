@@ -68,11 +68,7 @@
 
 #exp_table{
   width: 590px;
-  margin-top: 20px;
   margin: 3px auto 0px auto;
-}
-
-#exp_table{
   border-width: 0px 0px 1px 1px;
   border-style: solid;
 }
