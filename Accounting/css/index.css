@@ -14,6 +14,12 @@
 #balance_box{
   margin-left: 60px;
   margin-top: 20px;
+  font-size: 12px;
+}
+
+#clear_btn_box{
+  margin-left: 60px;
+  margin-top: 0px;
 }
 
 #err_msgs{
