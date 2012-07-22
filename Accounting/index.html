@@ -15,6 +15,15 @@
         <span>Balance:</span>
         <span>$45.3</span>
       </div>
+      <div id="err_msgs">
+        <ol>
+          <!--<li>Please provide a note</li>-->
+          <!--<li>Either income or expense should be defined</li>-->
+          <!--<li>Income and expense should be numbers</li>-->
+          <!--<li>Date must be provided</li>-->
+          <!--<li>Invalid date format</li>-->
+        </ol>
+      </div>
       <div id="input_form">
         <div id="note">
           <input type="text" size="43" placeholder="Note"></input>
@@ -27,38 +36,31 @@
         </div>
         <div id="date">
           <input id="datepicker" type="text" size="11" placeholder="mm/dd/yyyy"></input> 
-          <!-- <div id="picker"></div> -->
         </div>
         <div id="add">
-          <input type="button" value="Add"></input> 
+          <input type="button" value="Add" id="add_btn"></input> 
         </div>
       </div>
-      <div id="exp_table">
-        <div class="row first">
-          <div class="id"></div>
-          <div class="note">Note</div>
-          <div class="expense">Expense</div>
-          <div class="income">Income</div>
-          <div class="date">Date</div>
-          <div class="action">Action</div>
-        </div>
-        <div class="row">
-          <div class="id"></div>
-          <div class="note">Groceries</div>
-          <div class="expense">$12.2</div>
-          <div class="income">$50.0</div>
-          <div class="date">2/6/2012</div>
-          <div class="action"><div class="icon"></div></div>
-        </div>
-        <div class="row even">
-          <div class="id"></div>
-          <div class="note">Credit Card</div>
-          <div class="expense">$65.23</div>
-          <div class="income">$23.7</div>
-          <div class="date">6/5/2012</div>
-          <div class="action"><div class="icon"></div></div>
-        </div>
-      </div>
+      <table id="exp_table" border="2">
+        <tr>
+          <th class="id"></th>
+          <th class="note">Note</th>
+          <th class="expense">Expense</th>
+          <th class="income">Income</th>
+          <th class="date">Date</th>
+          <th class="action">Action</th>
+        </tr>
+        <tr>
+          <td class="id"></td>
+          <td class="note">Credit Card</td>
+          <td class="expense">$65.23</td>
+          <td class="income">$23.7</td>
+          <td class="date">6/5/2012</td>
+          <td class="action">
+            <div class="icon"></div>
+          </td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
