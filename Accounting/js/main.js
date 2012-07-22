@@ -106,6 +106,14 @@ function validate(id, note, expense, income, date){
     $('#date input').addClass('error');
     valid = false;
   }
+  else{
+    if ( /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(date) === false )
+    {
+      add_err_msg('Invalid date format');
+      $('#date input').addClass('error');
+      valid = false;
+    }
+  }
 
   return valid;
 }
