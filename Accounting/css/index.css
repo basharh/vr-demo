@@ -13,7 +13,7 @@
 
 #balance_box{
   margin-left: 60px;
-  margin-top: 20px;
+  margin-top: 40px;
   font-size: 12px;
 }
 
@@ -29,7 +29,7 @@
   font-size: 12px;
   left: 400px;
   line-height: 13px;
-  top: 20px;
+  top: 40px;
 }
 
 #err_msgs li{
@@ -40,7 +40,7 @@
 #input_form{
   width: 590px;
   height: 30px;
-  margin: 60px auto 0px auto;
+  margin: 17px auto 0px auto;
   /*border: 1px solid blue;*/
 }
 
