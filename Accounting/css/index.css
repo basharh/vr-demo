@@ -117,4 +117,5 @@
 }
 .ui-datepicker-trigger{
   vertical-align: text-top !important;
+  margin-left: 2px;
 }
