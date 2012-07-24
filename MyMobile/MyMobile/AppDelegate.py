@@ -10,12 +10,11 @@
 from Foundation import *
 from AppKit import *
 import os
+import time
 
 class AppDelegate(NSObject):
 
   textfield = objc.IBOutlet()
-  dirname = ""
-  appMessage = "hello control";
   T9Data = {}
 
   def addWordToDict(self, index, word):
@@ -68,12 +67,18 @@ class AppDelegate(NSObject):
     self.textfield.setSelectable_(0)
     NSLog("Application did finish launching.")
     self.loadDict();
+    NSLog("T9Data Length: " + str( len(self.T9Data) )  );
+    #NSLog( str( self.T9Data ) ); 
+  
+  # Sends a 'loading_dict' message to controller
+  def sendLoadingDictMsg(self):
     nc = NSNotificationCenter.defaultCenter()
     nc.postNotificationName_object_userInfo_(
-      'love_note', None, {'path':'xyz'})
-    NSLog("T9Data Length: " + str( len(self.T9Data) )  );
-
-    NSLog( str( self.T9Data ) ); 
-  #def loadDictionary_(self):
+      'loading_dict', None, None)
     
+  # Sends a 'loaded_dict' message to controller
+  def sendLoadedDictMsg(self):
+    nc = NSNotificationCenter.defaultCenter()
+    nc.postNotificationName_object_userInfo_(
+      'loaded_dict', None, None)
 

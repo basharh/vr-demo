@@ -9,54 +9,36 @@
 
 import objc
 from Foundation import *
-
 from AppDelegate import *
 
 class MobileController(NSObject):
 
-  data = { 
-      7764726:  ["program"], 
-      263:      ["and", "cod"],
-      786:      ["pun", "quo", "rum", "run", "sum", "sun"],
-      8447:     ["this"],
-      746753:   ["simple"],
-      8378:     ["test", "vest"] 
-  }
   textfield = objc.IBOutlet()
-  #index = "" # Stores the latest entered key sequence
-  #index = 263
   index = ""
-  #NSLog("Controller under initialization");
 
   def init(self):
     self = super(MobileController, self).init()
     if self is None: return None
-    NSLog("Initializing controller: " + AppDelegate.appMessage);
     nc = NSNotificationCenter.defaultCenter()
+    # handle 'loading_dict'
     nc.addObserver_selector_name_object_( 
-      self, "mycallback", 'love_note', None)
+      self, "loadingDict", 'loading_dict', None)
+    # handle 'loaded_dict'
+    nc.addObserver_selector_name_object_( 
+      self, "loadedDict", 'loaded_dict', None)
     return self
 
+  def loadingDict( self ):
+    NSLog("MobileController: dictionary loading in progress");
+    self.disableButtons();
 
-  def mycallback(self):
-    NSLog("Controller recieved a message");
+  def loadedDict( self ):
+    NSLog("MobileController: dictionary loaded");
+    self.enableButtons();
 
   @objc.IBAction
   def pressStar_(self, sender):
     NSLog(u"Star pressed"); 
-
-  #@objc.IBAction
-  #def press0_(self, sender):
-    #NSLog(u"Button 0 pressed"); 
-    #if self.index == "":
-      #return
-    ##for k in self.data.iterkeys():
-    #for k in AppDelegate.T9Data.iterkeys():
-      #if k == int(self.index):
-        ##words = "[" + (", ").join(self.data[k]) + "] "
-        #words = self.textfield.stringValue() + "[" + (", ").join(AppDelegate.T9Data[k]) + "] "
-        #self.textfield.setStringValue_(words)
-    #self.index = ""
 
   @objc.IBAction
   def press0_(self, sender):
@@ -68,17 +50,12 @@ class MobileController(NSObject):
       if k == int(self.index):
         words = AppDelegate.T9Data[k];
 
+    words_str = "[" + (", ").join( words ) + "]";
+
     self.textfield.setStringValue_(self.textfield.stringValue() + " " +
-        str( words ) )
+      words_str ); #str( words ) )
 
-    self.index = ""
-
-    #words_str = ""
-    #if ( len(words) == 0 )
-      #words_str = "[]";      
-    #else
-      #words_str = "[" + (", ").join(AppDelegate.T9Data[k]) + "] "
-    #words = self.textfield.stringValue() + "[" + (", ").join(AppDelegate.T9Data[k]) + "] "
+    self.index = "" # reset self.index for the next user key sequence.
 
   @objc.IBAction
   def press1_(self, sender): # AKA press`1_
@@ -124,3 +101,10 @@ class MobileController(NSObject):
   def pressWXYZ9_(self, sender):
     NSLog(u"Button 9 pressed"); 
     self.index += "9"
+
+  #def disableButtons(self):
+    #self.keyButton0.setState_(NSOffState);
+
+  #def enableButtons(self):
+    #self.keyButton0.setState_(NSOnState);
+
