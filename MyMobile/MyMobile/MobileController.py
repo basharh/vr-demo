@@ -10,7 +10,10 @@
 import objc
 from Foundation import *
 
+from AppDelegate import *
+
 class MobileController(NSObject):
+
   data = { 
       7764726:  ["program"], 
       263:      ["and", "cod"],
@@ -23,18 +26,64 @@ class MobileController(NSObject):
   #index = "" # Stores the latest entered key sequence
   #index = 263
   index = ""
+  #NSLog("Controller under initialization");
+
+  def init(self):
+    self = super(MobileController, self).init()
+    if self is None: return None
+    NSLog("Initializing controller: " + AppDelegate.appMessage);
+    nc = NSNotificationCenter.defaultCenter()
+    nc.addObserver_selector_name_object_( 
+      self, "mycallback", 'love_note', None)
+    return self
+
+
+  def mycallback(self):
+    NSLog("Controller recieved a message");
+
+  @objc.IBAction
+  def pressStar_(self, sender):
+    NSLog(u"Star pressed"); 
+
+  #@objc.IBAction
+  #def press0_(self, sender):
+    #NSLog(u"Button 0 pressed"); 
+    #if self.index == "":
+      #return
+    ##for k in self.data.iterkeys():
+    #for k in AppDelegate.T9Data.iterkeys():
+      #if k == int(self.index):
+        ##words = "[" + (", ").join(self.data[k]) + "] "
+        #words = self.textfield.stringValue() + "[" + (", ").join(AppDelegate.T9Data[k]) + "] "
+        #self.textfield.setStringValue_(words)
+    #self.index = ""
 
   @objc.IBAction
   def press0_(self, sender):
     NSLog(u"Button 0 pressed"); 
     if self.index == "":
       return
-    for k in self.data.iterkeys():
+    words = []
+    for k in AppDelegate.T9Data.iterkeys():
       if k == int(self.index):
-        #words = "[" + (", ").join(self.data[k]) + "] "
-        words = self.textfield.stringValue() + "[" + (", ").join(self.data[k]) + "] "
-        self.textfield.setStringValue_(words)
+        words = AppDelegate.T9Data[k];
+
+    self.textfield.setStringValue_(self.textfield.stringValue() + " " +
+        str( words ) )
+
     self.index = ""
+
+    #words_str = ""
+    #if ( len(words) == 0 )
+      #words_str = "[]";      
+    #else
+      #words_str = "[" + (", ").join(AppDelegate.T9Data[k]) + "] "
+    #words = self.textfield.stringValue() + "[" + (", ").join(AppDelegate.T9Data[k]) + "] "
+
+  @objc.IBAction
+  def press1_(self, sender): # AKA press`1_
+    NSLog(u"Button 1 pressed"); 
+    self.index += "1"
     
   @objc.IBAction
   def pressABC2_(self, sender):

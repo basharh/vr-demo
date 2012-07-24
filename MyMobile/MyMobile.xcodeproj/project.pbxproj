@@ -16,6 +16,8 @@
 		E833337815B9229D00DD5C41 /* AppDelegate.py in Resources */ = {isa = PBXBuildFile; fileRef = E833337715B9229D00DD5C41 /* AppDelegate.py */; };
 		E833337B15B9229D00DD5C41 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E833337915B9229D00DD5C41 /* MainMenu.xib */; };
 		E833338215B922B600DD5C41 /* MobileController.py in Resources */ = {isa = PBXBuildFile; fileRef = E833338115B922B600DD5C41 /* MobileController.py */; };
+		E8BA060C15BE2D2C00363077 /* english_concise.txt in Resources */ = {isa = PBXBuildFile; fileRef = E8BA060A15BE2D2C00363077 /* english_concise.txt */; };
+		E8BA060D15BE2D2C00363077 /* english.txt in Resources */ = {isa = PBXBuildFile; fileRef = E8BA060B15BE2D2C00363077 /* english.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		E833337715B9229D00DD5C41 /* AppDelegate.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = AppDelegate.py; sourceTree = "<group>"; };
 		E833337A15B9229D00DD5C41 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E833338115B922B600DD5C41 /* MobileController.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = MobileController.py; sourceTree = "<group>"; };
+		E8BA060A15BE2D2C00363077 /* english_concise.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = english_concise.txt; sourceTree = "<group>"; };
+		E8BA060B15BE2D2C00363077 /* english.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = english.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 		E833336915B9229D00DD5C41 /* MyMobile */ = {
 			isa = PBXGroup;
 			children = (
+				E8BA060A15BE2D2C00363077 /* english_concise.txt */,
+				E8BA060B15BE2D2C00363077 /* english.txt */,
 				E833337515B9229D00DD5C41 /* main.py */,
 				E833338115B922B600DD5C41 /* MobileController.py */,
 				E833337715B9229D00DD5C41 /* AppDelegate.py */,
@@ -166,6 +172,8 @@
 				E833337815B9229D00DD5C41 /* AppDelegate.py in Resources */,
 				E833337B15B9229D00DD5C41 /* MainMenu.xib in Resources */,
 				E833338215B922B600DD5C41 /* MobileController.py in Resources */,
+				E8BA060C15BE2D2C00363077 /* english_concise.txt in Resources */,
+				E8BA060D15BE2D2C00363077 /* english.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +305,7 @@
 				E833338015B9229D00DD5C41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
